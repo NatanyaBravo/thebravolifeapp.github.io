@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bravo Life - Deep Link</title>
+    <meta name="description" content="The Bravo Life App - Deep Link Handler">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #4B1D21 0%, #802A31 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #4B1D21;
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .status {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #4B1D21;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #802A31;
+        }
+        .info {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .code {
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">The Bravo Life</div>
+        <div class="subtitle">Deep Link Handler</div>
+        
+        <div class="status">
+            <h3>🚀 Deep Link Active</h3>
+            <p>This page is configured to open The Bravo Life app on your device.</p>
+        </div>
+        
+        <div class="info">
+            <h4>📱 How it works:</h4>
+            <ul>
+                <li><strong>Android:</strong> Uses App Links with <code>assetlinks.json</code></li>
+                <li><strong>iOS:</strong> Uses Universal Links with <code>apple-app-site-association</code></li>
+                <li><strong>Fallback:</strong> If app isn't installed, shows this page</li>
+            </ul>
+            
+            <h4>🔗 Test URLs:</h4>
+            <div class="code">
+                https://natanyabravo.github.io/thebravolifeapp.github.io/app
+            </div>
+            <div class="code">
+                https://natanyabravo.github.io/thebravolifeapp.github.io/app?param=value
+            </div>
+        </div>
+        
+        <a href="https://natanyabravo.github.io/thebravolifeapp.github.io/" class="button">
+            ← Back to Main Site
+        </a>
+        
+        <a href="https://natanyabravo.github.io/thebravolifeapp.github.io/.well-known/assetlinks.json" class="button">
+            View Android Config
+        </a>
+    </div>
+    
+    <script>
+        console.log('The Bravo Life Deep Link Page Loaded');
+        console.log('URL:', window.location.href);
+        console.log('User Agent:', navigator.userAgent);
+        
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        console.log('Is Mobile:', isMobile);
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log('URL Parameters:', Object.fromEntries(urlParams));
+    </script>
+</body>
+</html>
