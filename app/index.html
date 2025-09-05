@@ -120,6 +120,25 @@
         
         const urlParams = new URLSearchParams(window.location.search);
         console.log('URL Parameters:', Object.fromEntries(urlParams));
+        
+        // Try to open the app using custom URL scheme
+        function tryOpenApp() {
+            const customScheme = 'thebravolife://app';
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = customScheme;
+            document.body.appendChild(iframe);
+            
+            // Remove iframe after a short delay
+            setTimeout(() => {
+                document.body.removeChild(iframe);
+            }, 1000);
+        }
+        
+        // Try to open app on mobile devices
+        if (isMobile) {
+            setTimeout(tryOpenApp, 1000);
+        }
     </script>
 </body>
 </html>
