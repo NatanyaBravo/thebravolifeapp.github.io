@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.thebravolifeapp",
+    "sha256_cert_fingerprints": ["8B:63:02:C6:6E:DE:B9:30:6E:6B:90:59:E6:9C:CE:56:79:1F:5F:35:D7:D3:EA:CE:20:C2:D5:C2:9E:3B:69:22"]
+  }
+}]
