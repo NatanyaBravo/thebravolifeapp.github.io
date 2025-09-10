@@ -3,6 +3,6 @@
   "target": {
     "namespace": "android_app",
     "package_name": "com.thebravolifeapp",
-    "sha256_cert_fingerprints": ["8B:63:02:C6:6E:DE:B9:30:6E:6B:90:59:E6:9C:CE:56:79:1F:5F:35:D7:D3:EA:CE:20:C2:D5:C2:9E:3B:69:22"]
+    "sha256_cert_fingerprints": ["FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"]
   }
 }]
