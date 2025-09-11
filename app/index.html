@@ -79,8 +79,8 @@
         function redirectToStore() {
             if (isMobile()) {
                 if (isIOS()) {
-                    // Redirect to App Store
-                    window.location.href = 'https://apps.apple.com/app/the-bravo-life-delulu-sprint/id6749274123';
+                    // Try multiple methods to open App Store app
+                    openAppStore();
                 } else if (isAndroid()) {
                     // Try multiple methods to open Play Store app
                     openPlayStore();
@@ -92,6 +92,34 @@
                 // Desktop - show fallback with both options
                 showFallback();
             }
+        }
+        
+        // Open App Store app with multiple fallbacks
+        function openAppStore() {
+            // Method 1: Try App Store app URL
+            var appStoreUrl = 'itms-apps://itunes.apple.com/app/id6749274123';
+            
+            // Method 2: Try App Store app with action
+            var appStoreActionUrl = 'itms-apps://apps.apple.com/app/the-bravo-life-delulu-sprint/id6749274123';
+            
+            // Method 3: Web App Store fallback
+            var webUrl = 'https://apps.apple.com/app/the-bravo-life-delulu-sprint/id6749274123';
+            
+            // Try App Store app URL first
+            var iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = appStoreUrl;
+            document.body.appendChild(iframe);
+            
+            // If first method doesn't work, try alternative App Store URL
+            setTimeout(function() {
+                iframe.src = appStoreActionUrl;
+            }, 1000);
+            
+            // Final fallback to web
+            setTimeout(function() {
+                window.location.href = webUrl;
+            }, 3000);
         }
         
         // Open Play Store app with multiple fallbacks
