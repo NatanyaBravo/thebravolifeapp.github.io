@@ -82,8 +82,8 @@
                     // Redirect to App Store
                     window.location.href = 'https://apps.apple.com/app/the-bravo-life/id123456789';
                 } else if (isAndroid()) {
-                    // Redirect to Play Store
-                    window.location.href = 'https://play.google.com/store/apps/details?id=com.thebravolifeapp';
+                    // Try multiple methods to open Play Store app
+                    openPlayStore();
                 } else {
                     // Fallback for other mobile browsers
                     showFallback();
@@ -92,6 +92,34 @@
                 // Desktop - show fallback with both options
                 showFallback();
             }
+        }
+        
+        // Open Play Store app with multiple fallbacks
+        function openPlayStore() {
+            // Method 1: Try Android intent URL
+            var intentUrl = 'intent://details?id=com.thebravolifeapp#Intent;scheme=market;package=com.android.vending;end';
+            
+            // Method 2: Try market:// URL
+            var marketUrl = 'market://details?id=com.thebravolifeapp';
+            
+            // Method 3: Web Play Store fallback
+            var webUrl = 'https://play.google.com/store/apps/details?id=com.thebravolifeapp';
+            
+            // Try intent URL first
+            var iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = intentUrl;
+            document.body.appendChild(iframe);
+            
+            // If intent doesn't work, try market URL
+            setTimeout(function() {
+                iframe.src = marketUrl;
+            }, 1000);
+            
+            // Final fallback to web
+            setTimeout(function() {
+                window.location.href = webUrl;
+            }, 3000);
         }
         
         // Show fallback UI
