@@ -1,0 +1,23 @@
+# Set correct MIME types for app association files
+<Files "apple-app-site-association">
+    Header set Content-Type "application/json"
+</Files>
+
+<Files ".well-known/apple-app-site-association">
+    Header set Content-Type "application/json"
+</Files>
+
+<Files "assetlinks.json">
+    Header set Content-Type "application/json"
+</Files>
+
+<Files ".well-known/assetlinks.json">
+    Header set Content-Type "application/json"
+</Files>
+
+# Enable CORS for app association files
+<FilesMatch "\.(json)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</FilesMatch>
