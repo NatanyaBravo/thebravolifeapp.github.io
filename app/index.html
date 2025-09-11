@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Bravo Life</title>
+    <meta name="apple-itunes-app" content="app-argument=thebravolife://app">
+    <meta name="google-play-app" content="app-id=com.thebravolifeapp">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -45,15 +47,38 @@
             background: #016b4f;
         }
     </style>
+    <script>
+        // Try to open the app immediately
+        function tryOpenApp() {
+            // Try custom scheme first
+            window.location.href = 'thebravolife://app';
+            
+            // Fallback after a short delay
+            setTimeout(function() {
+                // If we're still here, the app didn't open
+                document.getElementById('fallback').style.display = 'block';
+            }, 2000);
+        }
+        
+        // Try to open app when page loads
+        window.onload = function() {
+            tryOpenApp();
+        };
+    </script>
 </head>
 <body>
     <div class="container">
         <div class="logo">The Bravo Life</div>
-        <div class="message">If you have the app installed, it should open automatically.</div>
-        <div class="message">If not, download it below:</div>
-        <a href="https://play.google.com/store/apps/details?id=com.thebravolifeapp" class="download-button">
-            Download for Android
-        </a>
+        <div class="message">Opening the app...</div>
+        <div id="fallback" style="display: none;">
+            <div class="message">App not installed? Download it below:</div>
+            <a href="https://play.google.com/store/apps/details?id=com.thebravolifeapp" class="download-button">
+                Download for Android
+            </a>
+            <a href="https://apps.apple.com/app/the-bravo-life/id123456789" class="download-button">
+                Download for iOS
+            </a>
+        </div>
     </div>
 </body>
 </html>
